@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.pragmatical.c2c_learn.app-mergeDebugResources-35:/layout/activity_login.xml",
+        "source": "com.pragmatical.c2c_learn.app-main-38:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.pragmatical.c2c_learn.app-mergeDebugResources-35:/layout/activity_signup.xml",
+        "source": "com.pragmatical.c2c_learn.app-main-38:/layout/activity_signup.xml"
+    },
+    {
+        "merged": "com.pragmatical.c2c_learn.app-mergeDebugResources-35:/layout/activity_main.xml",
+        "source": "com.pragmatical.c2c_learn.app-main-38:/layout/activity_main.xml"
+    }
+]

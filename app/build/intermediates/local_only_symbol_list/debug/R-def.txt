@@ -1,0 +1,37 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id editTextName
+id editTextTextEmailAddress
+id editTextTextPassword
+id loginButton
+id navigateButton
+id signupButton
+layout activity_login
+layout activity_main
+layout activity_signup
+mipmap ic_launcher
+mipmap ic_launcher_round
+string NavigateButtonLabel
+string app_name
+string gcm_defaultSenderId
+string goToLoginButton
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
+string hint_email_address
+string hint_enter_name
+string hint_password_field
+string loginButtonLabel
+string name
+string project_id
+string sign_up_button_label
+string signupButtonLabel
+style Base.Theme.C2clearn
+style Theme.C2clearn
+xml backup_rules
+xml data_extraction_rules
