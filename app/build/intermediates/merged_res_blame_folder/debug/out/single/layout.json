@@ -1,5 +1,9 @@
 [
     {
+        "merged": "com.pragmatical.c2c_learn.app-mergeDebugResources-35:/layout/activity_profile.xml",
+        "source": "com.pragmatical.c2c_learn.app-main-38:/layout/activity_profile.xml"
+    },
+    {
         "merged": "com.pragmatical.c2c_learn.app-mergeDebugResources-35:/layout/activity_login.xml",
         "source": "com.pragmatical.c2c_learn.app-main-38:/layout/activity_login.xml"
     },

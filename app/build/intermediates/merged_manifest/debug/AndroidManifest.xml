@@ -32,6 +32,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.C2clearn" >
         <activity
+            android:name="com.pragmatical.c2c_learn.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name="com.pragmatical.c2c_learn.LoginActivity"
             android:exported="true" >
             <intent-filter>
@@ -45,8 +48,7 @@
             android:exported="false" />
         <activity
             android:name="com.pragmatical.c2c_learn.MainActivity"
-            android:exported="false" >
-        </activity>
+            android:exported="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -106,6 +108,12 @@
             android:exported="false" >
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"

@@ -1379,6 +1379,9 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color colorAccent
+color colorPrimary
+color colorPrimaryDark
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
 color common_google_signin_btn_text_dark_disabled
@@ -2993,6 +2996,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable blankperson
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3001,6 +3005,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable cap
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -3217,6 +3222,7 @@ id beginOnFirstDraw
 id beginning
 id bestChoice
 id blocking
+id body
 id bottom
 id bounce
 id bounceBoth
@@ -3231,6 +3237,7 @@ id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
+id cardView1
 id carryVelocity
 id center
 id centerCrop
@@ -3301,9 +3308,11 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editTextFullName
 id editTextName
 id editTextTextEmailAddress
 id editTextTextPassword
+id editTextUserName
 id edit_query
 id edit_text_id
 id elastic
@@ -3337,9 +3346,13 @@ id ghost_view_holder
 id gone
 id graph
 id graph_wrap
+id group
+id group2
+id group3
 id group_divider
 id grouping
 id groups
+id header_image
 id header_title
 id hide_ime_id
 id hideable
@@ -3354,6 +3367,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
 id immediateStop
 id included
 id indeterminate
@@ -3402,6 +3416,8 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id matrix
+id menu_home
+id menu_profile
 id message
 id middle
 id mini
@@ -3436,7 +3452,6 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
-id navigateButton
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3503,6 +3518,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id saveButton
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3562,6 +3578,7 @@ id staticLayout
 id staticPostLayout
 id stop
 id stretch
+id subhead
 id submenuarrow
 id submit_area
 id supportScrollUp
@@ -3752,6 +3769,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_login
 layout activity_main
+layout activity_profile
 layout activity_signup
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
@@ -3834,6 +3852,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu menu_main
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
@@ -3905,6 +3924,7 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string copy_toast_msg
+string emailTextFieldLabel
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -3923,6 +3943,7 @@ string hide_bottom_view_on_scroll_behavior
 string hint_email_address
 string hint_enter_name
 string hint_password_field
+string hint_username
 string icon_content_description
 string item_view_role_description
 string loginButtonLabel
@@ -3964,6 +3985,8 @@ string material_timepicker_minute
 string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
+string menuItemHome
+string menuItemProfile
 string mtrl_badge_numberless_content_description
 string mtrl_checkbox_button_icon_path_checked
 string mtrl_checkbox_button_icon_path_group_name
@@ -4027,12 +4050,16 @@ string mtrl_switch_track_path
 string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string name
+string passwordTextFieldLabel
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string profileFullNameTextFieldLabel
+string profilepicLabel
 string project_id
+string saveButtonLabel
 string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description

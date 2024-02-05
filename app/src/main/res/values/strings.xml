@@ -6,7 +6,15 @@
     <string name="name">Name</string>
     <string name="loginButtonLabel">Login</string>
     <string name="hint_enter_name">Enter Name</string>
+    <string name="hint_username">User Name</string>
     <string name="hint_password_field">Password</string>
     <string name="hint_email_address">Email Address</string>
     <string name="sign_up_button_label">Sign Up</string>
+    <string name="menuItemProfile">Profile</string>
+    <string name="menuItemHome">Home</string>
+    <string name="emailTextFieldLabel">Email</string>
+    <string name="saveButtonLabel">Save</string>
+    <string name="passwordTextFieldLabel">Password</string>
+    <string name="profileFullNameTextFieldLabel">Name</string>
+    <string name="profilepicLabel">Profile Picture</string>
 </resources>
