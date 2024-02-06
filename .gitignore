@@ -34,5 +34,5 @@ replay_pid*
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
-
+/app/build
 *google-services.json
