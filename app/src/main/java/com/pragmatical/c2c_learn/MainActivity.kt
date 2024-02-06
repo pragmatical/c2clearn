@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.pragmatical.c2c_learn.databinding.ActivityMainBinding
@@ -25,10 +26,11 @@ class MainActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance()
         // Reference a specific location in the database, here we choose 'message'
         // Reference a specific location in the database, here we choose 'message'
-        val myRef = database.getReference("message")
+        val myRef = database.getReference("message2")
             // Write a message to the database
         myRef.setValue("Hello, World!")
-
+        Toast.makeText(baseContext, "Saved To Database",
+            Toast.LENGTH_SHORT).show()
         }
     }
 

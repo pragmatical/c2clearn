@@ -15,6 +15,6 @@
     <string name="emailTextFieldLabel">Email</string>
     <string name="saveButtonLabel">Save</string>
     <string name="passwordTextFieldLabel">Password</string>
-    <string name="profileFullNameTextFieldLabel">Name</string>
+    <string name="profileFullNameTextFieldLabel">Full Name</string>
     <string name="profilepicLabel">Profile Picture</string>
 </resources>
