@@ -1,22 +1,28 @@
 package com.pragmatical.c2c_learn
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.database
 import com.pragmatical.c2c_learn.databinding.ActivitySignupBinding
+
 
 class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
-    private lateinit var firebaseAuth: FirebaseAuth
-
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
         // Initialize Firebase Auth
-        firebaseAuth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
 
         binding.signupButton.setOnClickListener {
             val email = binding.editTextTextEmailAddress.text.toString().trim()
@@ -25,12 +31,17 @@ class SignupActivity : AppCompatActivity() {
             // Check if email and password are not empty
             if (isValidEmail(email) && isPasswordStrong(password)) {
                 // Create a new user with Firebase Authentication
-                firebaseAuth.createUserWithEmailAndPassword(email, password)
+                auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(baseContext, "Authentication Successful",
+                            val user = FirebaseAuth.getInstance().currentUser
+                            database= Firebase.database.reference
+                            writeNewUser(user?.uid.toString(),binding.editTextUserName.text.toString(),user?.email.toString())
+                            Toast.makeText(baseContext, "Account Created Successfully For: " + MyApplication.loggedInUserEmail,
                                 Toast.LENGTH_SHORT).show()
+
                             val intent = Intent(this, LoginActivity::class.java)
+
                             startActivity(intent)
                         } else {
                             // If sign up fails, display a message to the user
@@ -48,6 +59,11 @@ class SignupActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun writeNewUser(userId: String, userName: String, email: String) {
+        val user = User(userName, email)
+        database.child("users").child(userId).setValue(user)
     }
 
     private fun isValidEmail(email: String): Boolean {

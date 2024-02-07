@@ -17,4 +17,6 @@
     <string name="passwordTextFieldLabel">Password</string>
     <string name="profileFullNameTextFieldLabel">Full Name</string>
     <string name="profilepicLabel">Profile Picture</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log In</string>
 </resources>

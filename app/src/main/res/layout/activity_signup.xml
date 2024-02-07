@@ -7,60 +7,66 @@
     tools:context=".SignupActivity">
 
     <EditText
+        android:id="@+id/editTextUserName"
+        android:layout_width="356dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="128dp"
+        android:autofillHints="@string/hint_username"
+        android:ems="10"
+        android:hint="@string/hint_username"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:autofillHints="password"
+        android:layout_width="356dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="276dp"
+        android:autofillHints="@string/hint_password_field"
         android:ems="10"
         android:hint="@string/hint_password_field"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
-
-    <Button
-        android:id="@+id/signupButton"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:text="@string/signupButtonLabel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.096" />
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
-        android:autofillHints="name"
-        android:ems="10"
-        android:hint="@string/hint_enter_name"
-        android:inputType="text"
-        android:text="@string/name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:autofillHints="emailAddress"
+        android:layout_width="356dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="196dp"
+        android:autofillHints="@string/hint_email_address"
         android:ems="10"
         android:hint="@string/hint_email_address"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/signupButton"
+        android:layout_width="173dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="344dp"
+        android:text="@string/signupButtonLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="142dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/sign_up"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
