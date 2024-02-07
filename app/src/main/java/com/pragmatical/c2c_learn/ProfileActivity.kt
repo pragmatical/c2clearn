@@ -10,6 +10,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
+import com.google.firebase.database.getValue
 import com.pragmatical.c2c_learn.databinding.ActivityMainBinding
 import com.pragmatical.c2c_learn.databinding.ActivityProfileBinding
 
@@ -22,20 +23,22 @@ class ProfileActivity : AppCompatActivity() {
         auth=FirebaseAuth.getInstance()
         database= Firebase.database.reference
         val currentUser=auth.currentUser
-        var userFromDb=User()
+        val userFromDb=User()
         database.child("users").child(currentUser?.uid.toString()).get().addOnSuccessListener {
-            userFromDb= it.value as User
+            userFromDb.userName=it?.child("userName")?.value.toString()
+            userFromDb.fullName=it?.child("fullName")?.value.toString()
+            userFromDb.profilePic=it?.child("profilePic")?.value.toString()
+            binding = ActivityProfileBinding.inflate(layoutInflater)
+            binding.editTextTextEmailAddress.setText(currentUser?.email.toString())
+            binding.editTextUserName.setText(userFromDb.userName.toString())
+            binding.editTextFullName.setText(userFromDb.fullName.toString())
+            setContentView(binding.root)
+            Toast.makeText(baseContext, "Logged In User: " + binding.editTextTextEmailAddress.text,
+                Toast.LENGTH_SHORT).show()
         }.addOnFailureListener{
-            Toast.makeText(baseContext, "ERROR: " + binding.editTextTextEmailAddress.text,
+            Toast.makeText(baseContext, "ERROR: " + it.message!!,
                 Toast.LENGTH_SHORT).show()
         }
-        binding = ActivityProfileBinding.inflate(layoutInflater)
-        binding.editTextTextEmailAddress.setText(userFromDb.email.toString())
-        binding.editTextUserName.setText(userFromDb.username.toString())
-        binding.editTextFullName.setText(userFromDb.fullName.toString())
-        setContentView(binding.root)
-        Toast.makeText(baseContext, "Logged In User: " + binding.editTextTextEmailAddress.text,
-            Toast.LENGTH_SHORT).show()
 
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -50,10 +53,5 @@ class ProfileActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun writeNewUser(userId: String, userName: String, email: String) {
-        val user = User(userName, email)
-        database.child("users").child(userId).setValue(user)
     }
 }
