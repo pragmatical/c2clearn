@@ -30,8 +30,10 @@ class ProfileActivity : AppCompatActivity() {
             userFromDb.profilePic=it?.child("profilePic")?.value.toString()
             binding = ActivityProfileBinding.inflate(layoutInflater)
             binding.editTextTextEmailAddress.setText(currentUser?.email.toString())
-            binding.editTextUserName.setText(userFromDb.userName.toString())
-            binding.editTextFullName.setText(userFromDb.fullName.toString())
+            if(userFromDb.userName!=null)
+                binding.editTextUserName.setText(userFromDb.userName.toString())
+            if(userFromDb.fullName!=null)
+                binding.editTextFullName.setText(userFromDb.fullName.toString())
             setContentView(binding.root)
             Toast.makeText(baseContext, "Logged In User: " + binding.editTextTextEmailAddress.text,
                 Toast.LENGTH_SHORT).show()

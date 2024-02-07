@@ -37,7 +37,7 @@ class SignupActivity : AppCompatActivity() {
                             val user = FirebaseAuth.getInstance().currentUser
                             database= Firebase.database.reference
                             writeNewUser(user?.uid.toString(),binding.editTextUserName.text.toString(),user?.email.toString())
-                            Toast.makeText(baseContext, "Account Created Successfully For: " + MyApplication.loggedInUserEmail,
+                            Toast.makeText(baseContext, "Account Created Successfully For: ",
                                 Toast.LENGTH_SHORT).show()
 
                             val intent = Intent(this, LoginActivity::class.java)
