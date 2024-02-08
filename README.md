@@ -1,6 +1,6 @@
 # c2clearn
 
-Code2College Android Development Class Example Application
+Code2College Android Development Class Example Application, instructions on usage below.
 
 ## Fork, clone repo and create project from cloned repo
 1. Download and install [Android Studio](https://developer.android.com/studio)
