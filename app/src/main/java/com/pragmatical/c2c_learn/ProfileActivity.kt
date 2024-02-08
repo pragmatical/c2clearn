@@ -18,27 +18,39 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var binding: ActivityProfileBinding
     private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth=FirebaseAuth.getInstance()
         database= Firebase.database.reference
         val currentUser=auth.currentUser
+        val currentUserId=currentUser?.uid.toString()
         val userFromDb=User()
+        binding = ActivityProfileBinding.inflate(layoutInflater)
+        binding.editTextTextEmailAddress.setText(currentUser?.email)
         database.child("users").child(currentUser?.uid.toString()).get().addOnSuccessListener {
             userFromDb.userName=it?.child("userName")?.value.toString()
             userFromDb.fullName=it?.child("fullName")?.value.toString()
             userFromDb.profilePic=it?.child("profilePic")?.value.toString()
-            binding = ActivityProfileBinding.inflate(layoutInflater)
-            binding.editTextTextEmailAddress.setText(currentUser?.email.toString())
-            if(userFromDb.userName!=null)
-                binding.editTextUserName.setText(userFromDb.userName.toString())
-            if(userFromDb.fullName!=null)
+            if(userFromDb.userName!="null")
+                binding.editTextUserName.setText(userFromDb.userName)
+            if(userFromDb.fullName!="null")
                 binding.editTextFullName.setText(userFromDb.fullName.toString())
             setContentView(binding.root)
             Toast.makeText(baseContext, "Logged In User: " + binding.editTextTextEmailAddress.text,
                 Toast.LENGTH_SHORT).show()
         }.addOnFailureListener{
             Toast.makeText(baseContext, "ERROR: " + it.message!!,
+                Toast.LENGTH_SHORT).show()
+        }
+
+        binding.saveButton.setOnClickListener{
+            database= Firebase.database.reference
+            val userName=binding.editTextUserName.text.toString()
+            val fullName=binding.editTextFullName.text.toString()
+            database.child("users").child(currentUserId).child("userName").setValue(userName)
+            database.child("users").child(currentUserId).child("fullName").setValue(fullName)
+            Toast.makeText(baseContext, "Account Created Successfully For: ",
                 Toast.LENGTH_SHORT).show()
         }
 

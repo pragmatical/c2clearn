@@ -11,4 +11,6 @@
 
     <!--   a secondary color for controls like checkboxes and text fields. -->
     <color name="colorAccent">#FF4081</color>
+
+    <color name="ic_launcher_background">#303F9F</color>
 </resources>
