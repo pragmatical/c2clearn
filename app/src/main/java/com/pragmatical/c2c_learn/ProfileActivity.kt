@@ -10,9 +10,8 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
-import com.google.firebase.database.getValue
-import com.pragmatical.c2c_learn.databinding.ActivityMainBinding
 import com.pragmatical.c2c_learn.databinding.ActivityProfileBinding
+import com.pragmatical.c2c_learn.models.User
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
@@ -25,7 +24,7 @@ class ProfileActivity : AppCompatActivity() {
         database= Firebase.database.reference
         val currentUser=auth.currentUser
         val currentUserId=currentUser?.uid.toString()
-        val userFromDb=User()
+        val userFromDb= User()
         binding = ActivityProfileBinding.inflate(layoutInflater)
         binding.editTextTextEmailAddress.setText(currentUser?.email)
         database.child("users").child(currentUser?.uid.toString()).get().addOnSuccessListener {

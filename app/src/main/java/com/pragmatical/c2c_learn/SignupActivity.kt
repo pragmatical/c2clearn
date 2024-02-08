@@ -6,11 +6,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.database
 import com.pragmatical.c2c_learn.databinding.ActivitySignupBinding
+import com.pragmatical.c2c_learn.models.User
 
 
 class SignupActivity : AppCompatActivity() {
