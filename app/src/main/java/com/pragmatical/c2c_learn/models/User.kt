@@ -1,4 +1,4 @@
-package com.pragmatical.c2c_learn
+package com.pragmatical.c2c_learn.models
 import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
