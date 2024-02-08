@@ -2,7 +2,7 @@
 
 Code2College Android Development Class Example Application, instructions on usage below.
 
-## Fork, clone repo and create project from cloned repo
+## 1. Fork, clone repo and create project from cloned repo
 1. Download and install [Android Studio](https://developer.android.com/studio)
 2. Fork the following repo: <https://github.com/pragmatical/c2clearn>
 3. Start Android Studio
@@ -14,7 +14,7 @@ Code2College Android Development Class Example Application, instructions on usag
    ```
 6. Click clone - this will take a bit of time but when finished your project will open in Android studio
 
-## Set Up Firebase
+## 2. Set Up Firebase
 
 ### Set Up Authentication
 
@@ -39,7 +39,7 @@ Code2College Android Development Class Example Application, instructions on usag
 6. Click on Create Database
 7. Follow Steps to create the database ensuring you start the database in test mode finish by clicking enable in that screen
 
-## Run the app
+## 3. Run the app
 
 1. Your app should be ready to run in Android Studio
 2. From Android Studio click Run App
