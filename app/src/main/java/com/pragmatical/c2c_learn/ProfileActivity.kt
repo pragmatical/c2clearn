@@ -49,7 +49,7 @@ class ProfileActivity : AppCompatActivity() {
             val fullName=binding.editTextFullName.text.toString()
             database.child("users").child(currentUserId).child("userName").setValue(userName)
             database.child("users").child(currentUserId).child("fullName").setValue(fullName)
-            Toast.makeText(baseContext, "Account Created Successfully For: ",
+            Toast.makeText(baseContext, "Profile updated successfully!",
                 Toast.LENGTH_SHORT).show()
         }
 
