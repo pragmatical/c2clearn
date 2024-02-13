@@ -85,11 +85,7 @@ class ProfileActivity : AppCompatActivity() {
                 val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
                 binding.imageView.setImageBitmap(bmp)
             }.addOnFailureListener {
-                Toast.makeText(
-                    applicationContext,
-                    "No Such file or Path found!!",
-                    Toast.LENGTH_LONG
-                ).show()
+
             }
     }
 
