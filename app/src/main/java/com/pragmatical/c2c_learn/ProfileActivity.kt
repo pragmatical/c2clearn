@@ -94,7 +94,7 @@ class ProfileActivity : AppCompatActivity() {
             storageReference.child("images/$currentUserId.jpeg")
         ref.putFile(profileImageUri)
             .addOnSuccessListener {
-                Toast.makeText(this@ProfileActivity, "Uploaded", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProfileActivity, "Profile Pic Uploaded", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this@ProfileActivity, "Failed " + e.message, Toast.LENGTH_SHORT)
