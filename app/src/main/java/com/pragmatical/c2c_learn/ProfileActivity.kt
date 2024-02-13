@@ -1,7 +1,6 @@
 package com.pragmatical.c2c_learn
 
 
-import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -21,7 +20,6 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.storage
 import com.pragmatical.c2c_learn.databinding.ActivityProfileBinding
 import com.pragmatical.c2c_learn.models.User
-import java.util.UUID
 
 
 class ProfileActivity : AppCompatActivity() {
@@ -103,7 +101,7 @@ class ProfileActivity : AppCompatActivity() {
                     .show()
             }
             .addOnProgressListener { taskSnapshot ->
-                val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot
+                100.0 * taskSnapshot.bytesTransferred / taskSnapshot
                     .totalByteCount
             }
     }
