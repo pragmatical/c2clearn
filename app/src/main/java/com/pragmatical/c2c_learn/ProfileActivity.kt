@@ -129,6 +129,10 @@ class ProfileActivity : AppCompatActivity() {
                 startActivity(Intent(this, MainActivity::class.java))
                 true
             }
+            R.id.menu_create_post -> {
+                startActivity(Intent(this, ContentUploadActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
