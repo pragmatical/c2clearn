@@ -4,6 +4,9 @@
         android:id="@+id/menu_home"
         android:title="@string/menuItemHome" />
     <item
+        android:id="@+id/menu_create_post"
+        android:title="@string/menu_create_post" />
+    <item
         android:id="@+id/menu_profile"
         android:title="@string/menuItemProfile" />
 

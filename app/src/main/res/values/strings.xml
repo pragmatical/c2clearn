@@ -20,4 +20,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log In</string>
     <string name="buttonSetImage">Set Image</string>
+    <string name="create_post">Create Post</string>
+    <string name="save">Save</string>
+    <string name="menu_create_post">Create Post</string>
 </resources>
