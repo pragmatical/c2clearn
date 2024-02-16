@@ -20,15 +20,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
-import com.google.firebase.database.getValue
 
 import com.pragmatical.c2c_learn.databinding.ActivityContentUploadBinding
 import com.pragmatical.c2c_learn.models.Post
 import com.pragmatical.c2c_learn.models.User
-import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.UUID
 
@@ -50,8 +47,8 @@ class ContentUploadActivity : AppCompatActivity() {
             .addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (postSnapshot in dataSnapshot.children) {
-                    var postFromDB=postSnapshot.getValue(Post::class.java)!!
-                    var postView=createCardView(dbRef,postFromDB)
+                    val postFromDB=postSnapshot.getValue(Post::class.java)!!
+                    val postView=createCardView(dbRef,postFromDB)
                     binding.linearLayoutPosts.addView(postView,0)
                 }
             }
@@ -113,12 +110,12 @@ class ContentUploadActivity : AppCompatActivity() {
         name.setTextColor(Color.DKGRAY)
         val currentUser=auth.currentUser
         if(currentUser!=null)
-            dbRef.child("users").child(currentUser.uid).get().addOnSuccessListener {
+            dbRef.child("users").child(post.createdBy!!).get().addOnSuccessListener {
                 val userFromDb= it.getValue(User::class.java)!!
                 //Populate profile activity fields
                 //username and full name populated from db
-                if(userFromDb.fullName !="null")
-                    name.text=userFromDb.fullName.toString()
+                if(userFromDb.userName !="null")
+                    name.text=userFromDb.userName.toString()
             }.addOnFailureListener{
                 Toast.makeText(baseContext, "ERROR: " + it.message!!,
                     Toast.LENGTH_SHORT).show()
