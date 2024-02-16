@@ -5,4 +5,4 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class User(var userName: String? = null,
                 val email: String? = null,
                 var fullName: String? = null,
-                var profilePic: String? = null)
+    )
