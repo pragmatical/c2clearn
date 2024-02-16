@@ -1,6 +1,10 @@
 # c2clearn
 
-Code2College Android Development Class Example Application, instructions on usage below.
+Code2College Android Development Class Example Application, instructions on usage below.  The application is written in Kotlin using Firebase for backend.  The example application provides functionality to:
+- Register - using Firebase Authentication and Firebase Real Time Database
+- Authenticate - using Firebase Authentication
+- Create Posts - using Firebase Real Time Database
+- Update Profile - including a profile picture using Firebase Real Time Database and Firebase Storage
 
 ## 1.  Fork, clone repo and create project from cloned repo
 1. Download and install [Android Studio](https://developer.android.com/studio)
@@ -35,9 +39,21 @@ Code2College Android Development Class Example Application, instructions on usag
 2. Expand Realtime Database in the assistant
 3. Your app should be conected to the database already soset up the dependencies by following steps in the Add Realtime Database to your app
 4. Navigate to firebase console and open your newly created project
-5. Click All Products and then Clidk on Realtime Database
+5. Click All Products and then Click on Realtime Database
 6. Click on Create Database
-7. Follow Steps to create the database ensuring you start the database in test mode finish by clicking enable in that screen
+7. Follow Steps to create the database ensuring you start the database in test mode, finish by clicking enable in that screen.
+
+### Set Up Storage
+
+1. In Android Studio open firebase assistant by clicking on Tools>Firebase
+2. Expand Cloud Storage for Firebase in the assistant and click get started with cloud storage
+3. Firebase connection should exist but if not, connect to firebase project
+4. Your app should be conected to the database already so set up the dependencies by following steps in the Add Realtime Database to your app
+5. Navigate to firebase console and open your newly created project
+6. Click All Products and then Click on Storage
+7. Click on Get Started 
+8. Follow Steps to create storage bucket and ensure you create the storage bucket in test mode.
+9. To finish the setup select a location and click Done
 
 ## 3.  Run the app
 
