@@ -1,10 +1,12 @@
 package com.pragmatical.c2c_learn
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewGroup
@@ -15,8 +17,13 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
+import com.google.firebase.database.getValue
 
 import com.pragmatical.c2c_learn.databinding.ActivityContentUploadBinding
 import com.pragmatical.c2c_learn.models.Post
@@ -28,8 +35,10 @@ import java.util.UUID
 class ContentUploadActivity : AppCompatActivity() {
     private lateinit var binding: ActivityContentUploadBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var dbRef:DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        dbRef=Firebase.database.reference
 
         auth=FirebaseAuth.getInstance()
         val currentUser=auth.currentUser
@@ -37,25 +46,39 @@ class ContentUploadActivity : AppCompatActivity() {
 
         binding=ActivityContentUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        dbRef.child("posts").orderByChild("createdDate")
+            .addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postSnapshot in dataSnapshot.children) {
+                    var postFromDB=postSnapshot.getValue(Post::class.java)!!
+                    var postView=createCardView(dbRef,postFromDB)
+                    binding.linearLayoutPosts.addView(postView,0)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+                // ...
+            }
+        })
 
         binding.buttonSave.setOnClickListener{
             val postId = UUID.randomUUID().toString() // Generate unique ID for the post
             val postText = binding.editTextTextMultiLine.text.toString() // Capture text
-
             // Add to LinearLayout
             //Save post to Firebase
-            val post= Post(id=postId,content=postText, createdBy = currentUserId, createdDate = System.currentTimeMillis())
-            val postView = createCardView(post)
-            binding.linearLayoutPosts.addView(postView)
+            val post= Post(content=postText, createdBy = currentUserId, createdDate = System.currentTimeMillis())
+            val postView = createCardView(dbRef,post)
+            binding.linearLayoutPosts.addView(postView,0)
             val databaseRef = Firebase.database.reference
-            databaseRef.child("posts").setValue(post)
+            databaseRef.child("posts").child(postId).setValue(post)
             binding.editTextTextMultiLine.setText("") // Clear input field for the next post
         }
 
     }
 
-    private fun createCardView(post:Post):CardView{
-        val dbRef=Firebase.database.reference
+    private fun createCardView(dbRef: DatabaseReference, post:Post):CardView{
         val cardLinearLayout = LinearLayout(this)
 
         cardLinearLayout.orientation = LinearLayout.VERTICAL
@@ -72,7 +95,7 @@ class ContentUploadActivity : AppCompatActivity() {
         cardView.cardElevation = 30f
 
         val date = TextView(this)
-        date.text = Date(post.createdDate).toString()
+        date.text = Date(post.createdDate!!).toString()
         date.textSize = 16f
         date.setTypeface(Typeface.MONOSPACE, Typeface.ITALIC)
         date.setTextColor(Color.DKGRAY)
