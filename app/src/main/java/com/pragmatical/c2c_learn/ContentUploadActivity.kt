@@ -10,11 +10,13 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -43,6 +45,8 @@ class ContentUploadActivity : AppCompatActivity() {
 
         binding=ActivityContentUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Retrieve posts from DB
         dbRef.child("posts").orderByChild("createdDate")
             .addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -63,9 +67,10 @@ class ContentUploadActivity : AppCompatActivity() {
         binding.buttonSave.setOnClickListener{
             val postId = UUID.randomUUID().toString() // Generate unique ID for the post
             val postText = binding.editTextTextMultiLine.text.toString() // Capture text
+            val postProfilePic="https://cataas.com/cat"
             // Add to LinearLayout
             //Save post to Firebase
-            val post= Post(content=postText, createdBy = currentUserId, createdDate = System.currentTimeMillis())
+            val post= Post(content=postText, createdBy = currentUserId, createdDate = System.currentTimeMillis(), imageUrl = postProfilePic)
             val postView = createCardView(dbRef,post)
             binding.linearLayoutPosts.addView(postView,0)
             val databaseRef = Firebase.database.reference
@@ -74,6 +79,8 @@ class ContentUploadActivity : AppCompatActivity() {
         }
 
     }
+
+
 
     private fun createCardView(dbRef: DatabaseReference, post:Post):CardView{
         val cardLinearLayout = LinearLayout(this)
@@ -108,6 +115,11 @@ class ContentUploadActivity : AppCompatActivity() {
         name.textSize = 16f
         name.setTypeface(Typeface.MONOSPACE, Typeface.ITALIC)
         name.setTextColor(Color.DKGRAY)
+        val profilePicView= ImageView(this)
+        if(post.imageUrl!="null")
+            Glide.with(this)
+                .load(post.imageUrl) // URL from the post data
+                .into(profilePicView) // ImageView in your post item layout
         val currentUser=auth.currentUser
         if(currentUser!=null)
             dbRef.child("users").child(post.createdBy!!).get().addOnSuccessListener {
@@ -120,8 +132,11 @@ class ContentUploadActivity : AppCompatActivity() {
                 Toast.makeText(baseContext, "ERROR: " + it.message!!,
                     Toast.LENGTH_SHORT).show()
             }
+
+
         cardLinearLayout.addView(date)
         cardLinearLayout.addView(cardContent)
+        cardLinearLayout.addView(profilePicView)
         cardLinearLayout.addView(name)
         cardView.addView(cardLinearLayout)
 

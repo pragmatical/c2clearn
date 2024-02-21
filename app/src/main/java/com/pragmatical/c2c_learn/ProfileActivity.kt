@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -54,6 +55,7 @@ class ProfileActivity : AppCompatActivity() {
         //email is populated from the currently logged in user
         binding.editTextTextEmailAddress.setText(currentUser?.email)
         //get the profile image for the current user
+
         displayProfileImage(currentUserId)
 
         binding.saveButton.setOnClickListener{
@@ -78,6 +80,7 @@ class ProfileActivity : AppCompatActivity() {
         val storageRef = storage.reference
         //get image that is stored with the name of the userid
         val profileImageRef = storageRef.child("images/$currentUserId.jpeg")
+
         profileImageRef.getBytes(5048576)
             .addOnSuccessListener { bytes ->
                 val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
