@@ -48,6 +48,11 @@ class ProfileActivity : AppCompatActivity() {
                 binding.editTextUserName.setText(userFromDb.userName)
             if(userFromDb.fullName !="null")
                 binding.editTextFullName.setText(userFromDb.fullName.toString())
+            if(userFromDb.imageURL!="null")
+                Glide.with(this)
+                    .load(userFromDb.imageURL) // URL from the post data
+                    .into(binding.imageView) // ImageView in your post item layout
+            //displayProfileImage(currentUserId)
         }.addOnFailureListener{
             Toast.makeText(baseContext, "ERROR: " + it.message!!,
                 Toast.LENGTH_SHORT).show()
@@ -56,14 +61,15 @@ class ProfileActivity : AppCompatActivity() {
         binding.editTextTextEmailAddress.setText(currentUser?.email)
         //get the profile image for the current user
 
-        displayProfileImage(currentUserId)
 
         binding.saveButton.setOnClickListener{
             database= Firebase.database.reference
             val userName=binding.editTextUserName.text.toString()
             val fullName=binding.editTextFullName.text.toString()
+            val imageURL="https://cataas.com/cat"
             database.child("users").child(currentUserId).child("userName").setValue(userName)
             database.child("users").child(currentUserId).child("fullName").setValue(fullName)
+            database.child("users").child(currentUserId).child("imageURL").setValue(imageURL)
             saveProfileImage(currentUserId)
             Toast.makeText(baseContext, "Profile updated successfully!",
                 Toast.LENGTH_SHORT).show()
