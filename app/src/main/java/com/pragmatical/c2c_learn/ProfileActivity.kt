@@ -70,7 +70,7 @@ class ProfileActivity : AppCompatActivity() {
             database.child("users").child(currentUserId).child("userName").setValue(userName)
             database.child("users").child(currentUserId).child("fullName").setValue(fullName)
             database.child("users").child(currentUserId).child("imageURL").setValue(imageURL)
-            saveProfileImage(currentUserId)
+            //saveProfileImage(currentUserId)
             Toast.makeText(baseContext, "Profile updated successfully!",
                 Toast.LENGTH_SHORT).show()
         }
